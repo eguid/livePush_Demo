@@ -1,0 +1,2 @@
+# livePush_Demo
+livePush推流器的使用web demo：采用REST请求来发布和停止推流，并使用播放器进行实时预览
