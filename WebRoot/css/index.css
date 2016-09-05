@@ -1,0 +1,120 @@
+* {
+	margin: 0;
+	padding: 0;
+	list-sytle: none;
+}
+
+h2 {
+	text-align: center;
+}
+
+.main {
+	background-color: #fcfcfc; 
+	font-size: 18px;
+	position: absolute;
+	top:5%;
+	left:100px;
+	border: solid 1px ##fdfdfd;
+	width: 1100px;
+	min-height: 500px;
+	margin: auto;
+}
+
+.videos {
+	margin-top: 2%;
+	margin-left: 4%;
+}
+
+input {
+	font-size: 18px;
+}
+
+.managerPanel {
+	border: solid 1px #eef;
+	background-color: #f8f8f8; 
+	position:absolute;
+	left: 64%;
+	top:0;
+	width: 320px;
+	height: 360px;
+	margin-top: 2%;
+	margin-left: 3%;
+}
+.panelTitle{
+	font-size:20px;
+	text-align:center;
+	padding:5px 0px 5px 0px;
+	border-bottom:dotted 2px #eee;
+}
+.panelChild{
+	margin-top:4px;
+	margin-left:30px;
+}
+
+.videoParam{
+	width:150px;
+	text-align:left;
+}
+
+.panelButtons input{
+	width:100px;
+	height:30px;
+	margin-top:5px;
+	margin-right:45px;
+}
+.videoParam {
+	margin: 5px;
+}
+.videoManager{
+	border-collapse:none;
+}
+.videoDetail {
+	background-color: #f7f7f7;
+	margin: 30px auto;
+	width: 1020px;
+	min-height: 200px;
+	border: solid 1px #eef;
+}
+.detailTitle{
+	padding:5px 0px 5px 0px;
+	text-align:center;
+	border-bottom:dotted 2px #eee;
+}
+.appManager{
+	margin-left:10px;
+	height:50px;
+}
+.appManager td
+{
+	text-align:center;
+	width:80px;
+	border-bottom:dotted 1px #eee;
+}
+.appManager th{
+	text-align:center;
+	width:80px;
+	border-bottom:dotted 1px #eee;
+}
+.appManager 
+thead  .list-input{
+	width:350px;
+}
+thead .list-output{
+	width:150px;
+}
+.list-input{
+	width:350px;
+	font-size:10px;
+}
+.list-output{
+	width:200px;
+	font-size:10px;
+}
+.closeVideoOnTable,.playVideoOnTable
+{
+	width:50px;
+}
+.closeVideo,.playVideo{
+	width:50px;
+	font-size:16px;
+}

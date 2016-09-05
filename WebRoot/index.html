@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>实时监控视频应用管理系统</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link href="player/video-js.min.css" rel="stylesheet" >
+<link href="css/index.css" rel="stylesheet" >
+<script src="player/videojs-ie8.min.js"></script>
+<script src="player/video.min.js"></script>
+<script type="text/javascript">videojs.options.flash.swf = "player/video-js.swf";</script>
+<script src="js/videojsAPI.js"></script>
+<script src="js/jquery.min.js"> </script>
+</head>
+<body>
+<h2>实时监控视频应用发布管理系统</h2>
+<div class="main">
+	<div id="videos" class="videos">
+		<!-- data-setup{}可以控制播放器的一些功能；autoplay:true/false，是否自动播放；preload：auto\none\meta，自动加载\不加载\加载元数据 -->
+		<video id="videoPlayer" class="video-js vjs-default-skin vjs-big-play-centered" 
+		controls preload="auto" poster="img/eguidlogo.png" width="640" height="360" 
+		data-setup='{ "html5" : { "nativeTextTracks" : false } }'>
+			<source src='rtmp://192.168.30.21/live/' type='rtmp/flv'  />
+		</video>
+	</div>
+	<!-- 管理面板 -->
+	<div class="managerPanel">
+	<p class="panelTitle">发布一个视频应用</p>
+	<form id="appForm">
+	<div class="panelChild"><a>应 用 名：</a><input type="text" class="videoParam" id="p-appName" name="appName" value="应用名"></div>
+	<div class="panelChild"><a>视 频 源：</a><input type="text" class="videoParam" id="p-input" name="input" value="rtsp://admin:admin@192.168.2.236:37779/cam/realmonitor?channel=1&subtype=0"></div>
+	<div class="panelChild"><a>发布地址：</a><input type="text" class="videoParam" id="p-output" name="output" value="rtmp://192.168.30.21/live/"></div>
+	<div class="panelChild"><a>视频格式：</a><input type="text" class="videoParam" id="p-fmt" name="fmt" value="flv"></div>
+	<div class="panelChild"><a>视频帧率：</a><input type="text" class="videoParam" id="p-fps" name="fps" value="25"></div>
+	<div class="panelChild"><a>分 辨 率：</a><input type="text" class="videoParam" id="p-rs" name="rs" value="640x360"></div>
+	<div class="panelChild"><a>关闭音频：</a><input type="text" class="videoParam" id="p-disableAudio" name="disableAudio" value="true"></div>
+	</form>
+	<div class="panelChild panelButtons"><input type="button" value="发布应用" onclick="pushApp();"></input><input type="button" value="发布并播放" onclick="pushAndPlay();"></input></div>
+</div>
+<!-- 视频详细 -->
+<div class="videoDetail">
+<p class="detailTitle">当前运行的应用列表</p>
+<!-- 视频管理 -->
+	<table class="videoManager">
+	<thead><tr class="appManager"><th class="list-appName">应用名</th><th >视频源</th><th >播放地址</th><th class="list-fmt">格式</th><th class="list-fps">帧率</th><th class="list-rs">分辨率</th><th class="list-disableAudio">音频</th><th class="playVideoOnTable"></th><th class="playVideoOnTable"><input class="refleshAppList" type="button" value="刷新" onclick="viewAll();"/></th></tr><thead>
+	<tbody id="appList">
+	<tr class="appManager"><td class="list-appName">xxx</td><td class="list-input">rtsp://admin:admin@192.168.2.236:37779/cam/realmonitor?channel=1&subtype=0</td><td class="list-output">rtmp://192.168.30.21/live/text1</td><td class="list-fmt">flv</td><td class="list-fps">25</td><td class="list-rs">640x360</td><td class="list-disableAudio">true</td><td class="playVideoOnTable"><input class="playVideo" type="button" value="播放"/></td><td class="closeVideoOnTable"><input class="closeVideo" type="button" value="关闭"/></td></tr>
+	<tr class="appManager"><td class="list-appName">应用名</td><td class="list-input">rtsp://admin:admin@192.168.2.236:37779/cam/realmonitor?channel=1&subtype=0</td><td class="list-output">rtmp://192.168.30.21/live/text1</td><td class="list-fmt">flv</td><td class="list-fps">25</td><td class="list-rs">640x360</td><td class="list-disableAudio">true</td><td class="playVideoOnTable"><input class="playVideo" type="button" value="播放" onclick="playFromList(this);"/></td><td class="closeVideoOnTable"><input class="closeVideo" type="button" value="关闭" onclick="closeApp(this,'123')"/></td></tr>
+	</tbody>
+	</table>
+	</div>
+</div>
+</body>
+<script src="js/play.js"></script>
+<script src="js/liveService.js"></script>
+</html>

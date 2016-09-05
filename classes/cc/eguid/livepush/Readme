@@ -1,0 +1,40 @@
+使用说明：
+（重要：使用前必须保证ffmpeg环境包在该项目的WEB-INF\classes\cc\eguid\livepush\ffmpeg\目录中）
+1、对象创建
+PushManager pusher = new PushManagerImpl();
+
+2、参数说明及设置
+2.1、参数说明
+name:应用名；
+input:接收地址；
+output:推送地址；
+fmt:视频格式；
+fps:视频帧率；
+rs:视频分辨率；
+disableAudio:是否开启音频；
+2.2、参数使用
+Map map = new HashMap();
+map.put("appName", "testwanglaing123");
+map.put("input","rtsp://admin:admin@192.168.2.236:37779/cam/realmonitor?channel=1&subtype=0");
+map.put("output", "rtmp://192.168.30.21/live/");
+map.put("fmt", "flv");
+map.put("fps", "25");
+map.put("rs", "640x360");
+map.put("disableAudio", "true");
+
+3、调用方法
+3.1、发布方法
+id push(map)
+pusher.push(map);
+
+3.2、关闭发布方法
+void closePush(appName)
+pusher.closePush(appName);
+
+3.3、查看所有正在push的列表
+Set<String> viewAppName()
+pusher.viewAppName();
+
+3.4、检测是否存在某个push
+boolean isHave(String appName)
+pusher.isHave(appName);

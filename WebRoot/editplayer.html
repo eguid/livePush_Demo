@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>playVideo</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link href="player/video-js.min.css" rel="stylesheet" >
+<script src="player/videojs-ie8.min.js"></script>
+<script src="player/video.min.js"></script>
+
+<script type="text/javascript">
+	videojs.options.flash.swf = "player/video-js.swf";
+</script>
+<script type="text/javascript">
+	/*
+	 * 根据videoJS官方文档编写的播放器常用操作  
+	 * 修改时间：2016年6月27日 
+	 * 修 改  人： wangliang
+	 * ++修改播放地址
+	 * ++重载播放器
+	 * ++获取播放器网络状态
+	 */
+
+	//获取当前类型
+	function getCurrentType(idnex) {
+		return idnex.currentType();
+	}
+	//获取当前播放地址
+	function getCurrentAddr(index) {
+		return index.currentSrc();
+	}
+	//获取当前播放时间
+	function getCurrentTime(index) {
+		return index.currentTime();
+	}
+	//获取当前网络状态
+	function networkState(index) {
+		return index.networkState();
+	}
+	//修改播放地址
+	function setsrc(index, url, type) {
+		index.src({
+			type : type,
+			src : url
+		});
+	}
+	//重载播放器
+	function reset(index) {
+		index.reset();
+		index.load();
+	}
+	//播放
+	function play(index) {
+		index.play();
+	}
+	//暂停
+	function pause(index) {
+		index.pause();
+	}
+</script>
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"> </script>
+
+<script type="text/javascript">
+	//获取dom
+	function get(index) {
+		return document.getElementById(index);
+	}
+	//修改播放地址并播放
+	function writeAddressAndPlay(index, url) {
+		//播放器操作
+		setsrc(index, url, "rtmp/flv");
+		play(index);
+	}
+	//高清标清切换就是应用名加减HD
+	function changeUrl(video) {
+	
+		var index = $(video).text();
+		//获取当前播放的url
+		var CurrentUrl = getCurrentAddr(player);
+		$(".vjs-menu-item").removeClass("vjs-selected");
+			$(video).addClass("vjs-selected");
+		if (index == "高清") {
+			if (CurrentUrl.indexOf("HD") == -1) {
+				CurrentUrl = CurrentUrl + "HD";
+			} else {
+				return;
+			}
+		} else {
+			if (CurrentUrl.indexOf("HD") != -1) {
+				CurrentUrl = CurrentUrl.replace("HD", "");
+			} else {
+				return;
+			}
+		}
+	
+		writeAddressAndPlay(player, CurrentUrl);
+	}
+	function getAddr()
+	{
+	alert(getCurrentAddr(player));
+	}
+</script>
+</head>
+<body>
+<div id="mp4">
+<video src="http://192.168.30.21/test1HD.video.mp4" autoplay="autoplay" height="360" width="640" title="视频" controls="controls"></video>
+</div>
+	<div id="videos">
+		<!-- data-setup{}可以控制播放器的一些功能；autoplay:true/false，是否自动播放；preload：auto\none\meta，自动加载\不加载\加载元数据 -->
+		<video id="player4" class="video-js vjs-default-skin vjs-big-play-centered" 
+		 poster="img/eguidlogo.png" width="640" height="360" data-setup='{}'>
+			 <source src="http://192.168.30.21/test1.video.mp4" type="video/mp4">
+		</video>
+	</div>
+	<input type="button" value="获取播放地址" onclick="getAddr();">
+</body>
+<script type="text/javascript">
+//播放器初始化方法
+	function playerInitVideo() {
+		$j = $(".vjs-fullscreen-control");
+		$j.before('<div class="vjs-subtitles-button vjs-menu-button vjs-menu-button-popup vjs-control vjs-button" tabindex="0" role="menuitem" aria-live="polite" aria-expanded="false" aria-haspopup="true">'
+						+ '<div class="vjs-menu" role="presentation">'
+						+ '<ul class="vjs-menu-content" role="menu">'
+						+ '<li class="vjs-menu-item" tabindex="-1" role="menuitemcheckbox"  onclick="changeUrl(this)">高清</li>'
+						+ '<li class="vjs-menu-item vjs-selected" tabindex="-1" role="menuitemcheckbox"  onclick="changeUrl(this)">标清 </li>'
+						+ '</ul></div><span class="vjs-control-text">清晰度</span></div>');}
+	var player = videojs('player4');
+	//play(p4);
+	player.ready(function() {
+	
+		playerInitVideo();
+		//player.play();
+		//setsrc(player,"rtmp://192.168.30.21/live/test3","rtmp/flv");
+	});
+</script>
+
+
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>play.html</title>
+<meta charset="utf-8">
+<link href="player/video-js.css" rel="stylesheet" type="text/css">
+<script src="player/video.js"></script>
+<script type="text/javascript">
+	videojs.options.flash.swf = "player/video-js.swf";
+	
+	/*
+	* 根据videoJS官方文档编写的播放器常用操作  
+	* 修改时间：2016年6月27日 
+	* 修 改  人： wangliang
+	* ++修改播放地址
+	* ++重载播放器
+	* ++获取播放器网络状态
+	*/
+	
+	//获取当前类型
+	function getCurrentType(idnex){
+	return idnex.currentType();
+	}
+	//获取当前播放地址
+	function getCurrentAddr(index){
+	return index.currentSrc();
+	}
+	//获取当前播放时间
+	function getCurrentTime(index){
+	return index.currentTime();
+	}
+	//获取当前网络状态
+	function networkState(index){
+	return index.networkState();
+	}
+	//修改播放地址
+	function setsrc(index,url,type){
+	index.src({ type: type, src: url });
+	}
+	//重载播放器
+	function reset(index){
+	index.reset();
+	index.load();
+	}
+	//播放
+	function play(index){
+	index.play();
+	}
+	//暂停
+	function pause(index){
+	index.pause();
+	}
+</script>
+<style type="text/css">
+ #videos div{
+float:left;
+}
+</style>
+</head>
+<body>
+<h4>视频一</h4>
+	<input id="videoInput1" type="text" value="" />
+	<input type="button" id="videoButton1" value="播放1" onclick="buttonclick(this);"/>
+	
+	<h4>视频二</h4>
+	<input id="videoInput2" type="text" value=""/>
+	<input type="button" id="videoButton2" value="播放2" onclick="buttonclick(this);"/>
+	
+	<h4>视频三</h4>
+	<input id="videoInput3" type="text" value=""/>
+	<input type="button" id="videoButton3" value="播放3" onclick="buttonclick(this);"/>
+	
+	<h4>视频四</h4>
+	<input id="videoInput4" type="text" value=""/>
+	<input type="button" id="videoButton4" value="播放4" onclick="buttonclick(this);"/>
+	
+	<div id="videos">
+	<div>
+	<video id="player1" class="video-js vjs-default-skin" data-setup="{}"
+		controls="" width="320" height="180">
+		<source src="http://192.168.30.21/test1.video.mp4" type="video/mp4">
+	</video>
+	</div>
+	<div>
+<video id="player2" class="video-js vjs-default-skin" data-setup="{}"
+		controls="" width="320" height="180">
+		<source src="rtmp://192.168.30.21/live/test3" type="rtmp/flv" />
+	</video>
+	</div>
+	<div>
+	<video id="player3" class="video-js vjs-default-skin" data-setup="{}"
+		controls="" width="320" height="180">
+		<source src="rtmp://192.168.30.21/live/test2" type="rtmp/flv" />
+	</video>
+	</div>
+	<div>
+	<video id="player4" class="video-js vjs-default-skin" data-setup="{}"
+		controls="" width="320" height="180">
+		<source src="rtmp://192.168.30.21/live/test2" type="rtmp/flv" />
+	</video>
+	</div>
+	</div>
+</body>
+<script type="text/javascript">
+var p1=videojs('player1');
+ play(p1);
+var p2=videojs('player2');
+ play(p2);
+var p3=videojs('player3');
+ play(p3);
+var p4=videojs('player4');
+ play(p4);
+ 
+//修改播放地址并播放
+function writeAddressAndPlay(index,url){
+console.info("设置播放地址");
+setsrc(index,"rtmp://192.168.30.21/live/"+url,"rtmp/flv");
+console.info("播放视频");
+play(index);
+}
+//切换播放源动作
+function buttonclick(index){
+alert(index.id);
+var value;
+var player;
+if(index.id=="videoButton1"){
+value=get("videoInput1").value;
+if(value==""||value==null){
+return;
+}
+player=p1;
+}else if(index.id=="videoButton2"){
+value=get("videoInput2").value;
+if(value==""||value==null){
+return;
+}
+player=p2;
+}else if(index.id=="videoButton3"){
+value=get("videoInput3").value;
+if(value==""||value==null){
+return;
+}
+player=p3;
+}else if(index.id=="videoButton4"){
+value=get("videoInput4").value;
+if(value==""||value==null){
+return;
+}
+player=p4;
+}
+writeAddressAndPlay(player,value);
+}
+//获取dom
+function get(index){
+return document.getElementById(index);
+}
+</script>
+
+</html>
