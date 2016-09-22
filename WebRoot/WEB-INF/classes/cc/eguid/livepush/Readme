@@ -1,4 +1,4 @@
-使用说明：
+livePush0.2.1使用说明：
 （重要：使用前必须保证ffmpeg环境包在该项目的WEB-INF\classes\cc\eguid\livepush\ffmpeg\目录中）
 1、对象创建
 PushManager pusher = new PushManagerImpl();
@@ -8,19 +8,21 @@ PushManager pusher = new PushManagerImpl();
 name:应用名；
 input:接收地址；
 output:推送地址；
+codec:视频编码；
 fmt:视频格式；
 fps:视频帧率；
 rs:视频分辨率；
-disableAudio:是否开启音频；
+twoPart:0-推一个元码流；1-推一个自定义推流；2-推两个流（一个是自定义，一个是元码）
 2.2、参数使用
 Map map = new HashMap();
 map.put("appName", "testwanglaing123");
 map.put("input","rtsp://admin:admin@192.168.2.236:37779/cam/realmonitor?channel=1&subtype=0");
 map.put("output", "rtmp://192.168.30.21/live/");
+map.put("codec","h264");
 map.put("fmt", "flv");
 map.put("fps", "25");
 map.put("rs", "640x360");
-map.put("disableAudio", "true");
+map.put("twoPart","2");
 
 3、调用方法
 3.1、发布方法

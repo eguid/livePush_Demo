@@ -64,7 +64,7 @@ public class CameraLiveServiceImpl implements CameraLiveService
                 }
                 else
                 {
-                    Map<String, String> map = getMap4LiveInfo(liveInfo);
+                    Map<String, Object> map = getMap4LiveInfo(liveInfo);
                     //开启推送处理器
                     appName = pusher.push(map);
                     // 存放信息
@@ -90,7 +90,7 @@ public class CameraLiveServiceImpl implements CameraLiveService
      * @param liveInfo
      * @return
      */
-    private Map<String, String> getMap4LiveInfo(LiveInfoEntity liveInfo)
+    private Map<String, Object> getMap4LiveInfo(LiveInfoEntity liveInfo)
     {
         String appName = liveInfo.getAppName();
         String input = liveInfo.getInput();
@@ -100,7 +100,7 @@ public class CameraLiveServiceImpl implements CameraLiveService
         String rs = liveInfo.getRs();
         String disableAudio = liveInfo.getDisableAudio();
 
-        Map<String, String> map = new HashMap<String, String>(20);
+        Map<String, Object> map = new HashMap<String,Object>(20);
         map.put("appName", appName);
         // 输入输出暂时固定
         map.put("input", input);

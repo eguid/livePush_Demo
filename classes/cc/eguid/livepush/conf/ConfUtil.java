@@ -29,8 +29,9 @@ public class ConfUtil
      */
     private  void initConfInfo()
     {
-        System.out.print("预加载配置：");
+        
         String path = getClass().getResource("../").getPath() + "ffmpeg/ffmpeg.exe";
+        System.out.print("预加载FFMPEG配置:"+path);
         File ffmpeg =new File(path);
         ffmpegPath=ffmpeg.getPath();
         if (isHave=ffmpeg.isFile())

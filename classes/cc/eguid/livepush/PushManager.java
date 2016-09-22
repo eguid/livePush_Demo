@@ -25,7 +25,7 @@ public interface PushManager
  * @param map
  * @return pushId(当前发布流的标识，方便操作该push)
  */
-public String push(Map<String,String>map);
+public String push(Map<String,Object>map);
 /**
  *  通过应用名删除某个push
  * @param pushId

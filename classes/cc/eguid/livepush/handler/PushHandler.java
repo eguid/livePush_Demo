@@ -23,12 +23,12 @@ public interface PushHandler
 {
 /**
  *  处理push操作（包含一个主进程和两个输出线程）
- * @param map 
+ * @param parammap 
  * 格式：
  * name:应用名；input:接收地址；output:推送地址；fmt:视频格式；fps:视频帧率；rs:视频分辨率；disableAudio:是否开启音频
  * @return map（进程，消息（info，error））
  * @throws IOException
  * 
  */
-public ConcurrentMap<String,Object> push(Map<String,String>map)throws Exception;
+public ConcurrentMap<String,Object> push(Map<String, Object> parammap)throws Exception;
 }

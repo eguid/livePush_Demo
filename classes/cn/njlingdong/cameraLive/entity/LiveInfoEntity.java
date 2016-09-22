@@ -13,190 +13,174 @@ import java.io.Serializable;
  * @see LiveInfoEntity
  * @since jdk1.7
  */
-public class LiveInfoEntity implements Serializable
-{
-    
-    public LiveInfoEntity()
-    {
-        super();
-    }
+public class LiveInfoEntity implements Serializable {
+	private static final long serialVersionUID = -2657813061488195041L;
 
-    public LiveInfoEntity(String appName, String input, String output, String fmt, String fps,
-                          String rs, String disableAudio)
-    {
-        super();
-        this.appName = appName;
-        this.input = input;
-        this.output = output;
-        this.fmt = fmt;
-        this.fps = fps;
-        this.rs = rs;
-        this.disableAudio = disableAudio;
-    }
+	public LiveInfoEntity() {
+		super();
+	}
 
-    /**
-     * 应用名
-     */
-    private String appName;
+	public LiveInfoEntity(String appName, String input, String output, String fmt, String fps, String rs,
+			String disableAudio) {
+		super();
+		this.appName = appName;
+		this.input = input;
+		this.output = output;
+		this.fmt = fmt;
+		this.fps = fps;
+		this.rs = rs;
+		this.disableAudio = disableAudio;
+	}
 
-    /**
-     * 视频源地址，可以是实时流地址也可以是文件路径
-     */
-    private String input;
+	/**
+	 * 应用名
+	 */
+	private String appName;
 
-    /**
-     * 实时流输出地址，这个默认是固定的rtmp服务器发布地址
-     */
-    private String output;
+	/**
+	 * 视频源地址，可以是实时流地址也可以是文件路径
+	 */
+	private String input;
 
-    /**
-     * 视频格式，默认flv
-     */
-    private String fmt;
+	/**
+	 * 实时流输出地址，这个默认是固定的rtmp服务器发布地址
+	 */
+	private String output;
 
-    /**
-     * 帧率，最好是25-60
-     */
-    private String fps;
+	/**
+	 * 视频格式，默认flv
+	 */
+	private String fmt;
 
-    /**
-     * 分辨率，例如：640x360
-     */
-    private String rs;
+	/**
+	 * 帧率，最好是25-60
+	 */
+	private String fps;
 
-    /**
-     * 是否关闭音频
-     */
-    private String disableAudio;
+	/**
+	 * 分辨率，例如：640x360
+	 */
+	private String rs;
 
-    /**
-     * @return the appName
-     */
-    public String getAppName()
-    {
-        return appName;
-    }
+	/**
+	 * 是否关闭音频
+	 */
+	private String disableAudio;
 
-    /**
-     * @param appName
-     *            the appName to set
-     */
-    public void setAppName(String appName)
-    {
-        this.appName = appName;
-    }
+	/**
+	 * @return the appName
+	 */
+	public String getAppName() {
+		return appName;
+	}
 
-    /**
-     * @return the input
-     */
-    public String getInput()
-    {
-        return input;
-    }
+	/**
+	 * @param appName
+	 *            the appName to set
+	 */
+	public void setAppName(String appName) {
+		this.appName = appName;
+	}
 
-    /**
-     * @param input
-     *            the input to set
-     */
-    public void setInput(String input)
-    {
-        this.input = input;
-    }
+	/**
+	 * @return the input
+	 */
+	public String getInput() {
+		return input;
+	}
 
-    /**
-     * @return the output
-     */
-    public String getOutput()
-    {
-        return output;
-    }
+	/**
+	 * @param input
+	 *            the input to set
+	 */
+	public void setInput(String input) {
+		this.input = input;
+	}
 
-    /**
-     * @param output
-     *            the output to set
-     */
-    public void setOutput(String output)
-    {
-        this.output = output;
-    }
+	/**
+	 * @return the output
+	 */
+	public String getOutput() {
+		return output;
+	}
 
-    /**
-     * @return the fmt
-     */
-    public String getFmt()
-    {
-        return fmt;
-    }
+	/**
+	 * @param output
+	 *            the output to set
+	 */
+	public void setOutput(String output) {
+		this.output = output;
+	}
 
-    /**
-     * @param fmt
-     *            the fmt to set
-     */
-    public void setFmt(String fmt)
-    {
-        this.fmt = fmt;
-    }
+	/**
+	 * @return the fmt
+	 */
+	public String getFmt() {
+		return fmt;
+	}
 
-    /**
-     * @return the fps
-     */
-    public String getFps()
-    {
-        return fps;
-    }
+	/**
+	 * @param fmt
+	 *            the fmt to set
+	 */
+	public void setFmt(String fmt) {
+		this.fmt = fmt;
+	}
 
-    /**
-     * @param fps
-     *            the fps to set
-     */
-    public void setFps(String fps)
-    {
-        this.fps = fps;
-    }
+	/**
+	 * @return the fps
+	 */
+	public String getFps() {
+		return fps;
+	}
 
-    /**
-     * @return the rs
-     */
-    public String getRs()
-    {
-        return rs;
-    }
+	/**
+	 * @param fps
+	 *            the fps to set
+	 */
+	public void setFps(String fps) {
+		this.fps = fps;
+	}
 
-    /**
-     * @param rs
-     *            the rs to set
-     */
-    public void setRs(String rs)
-    {
-        this.rs = rs;
-    }
+	/**
+	 * @return the rs
+	 */
+	public String getRs() {
+		return rs;
+	}
 
-    /**
-     * @return the disableAudio
-     */
-    public String getDisableAudio()
-    {
-        return disableAudio;
-    }
+	/**
+	 * @param rs
+	 *            the rs to set
+	 */
+	public void setRs(String rs) {
+		this.rs = rs;
+	}
 
-    /**
-     * @param disableAudio
-     *            the disableAudio to set
-     */
-    public void setDisableAudio(String disableAudio)
-    {
-        this.disableAudio = disableAudio;
-    }
+	/**
+	 * @return the disableAudio
+	 */
+	public String getDisableAudio() {
+		return disableAudio;
+	}
 
-    /* (non-Javadoc)
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString()
-    {
-        return "LiveInfoEntity [appName=" + appName + ", input=" + input + ", output=" + output
-               + ", fmt=" + fmt + ", fps=" + fps + ", rs=" + rs + ", disableAudio=" + disableAudio
-               + "]";
-    }
+	/**
+	 * @param disableAudio
+	 *            the disableAudio to set
+	 */
+	public void setDisableAudio(String disableAudio) {
+		this.disableAudio = disableAudio;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "LiveInfoEntity [appName=" + appName + ", input=" + input + ", output=" + output + ", fmt=" + fmt
+				+ ", fps=" + fps + ", rs=" + rs + ", disableAudio=" + disableAudio + "]";
+	}
 
 }
